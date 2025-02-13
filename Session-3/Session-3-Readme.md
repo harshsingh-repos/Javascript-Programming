@@ -197,8 +197,4 @@ JavaScript processes form data dynamically.
 ## 📖 References
 
 - [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [W3Schools JavaScript Tutorial](https://www.w3schools.com/js/)
 
----
-
-Happy coding! 🎯
