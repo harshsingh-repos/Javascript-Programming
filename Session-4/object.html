@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+
+  <body>
+    <button id="btn">Click Me</button>
+    <script>
+      document.getElementById("btn").addEventListener("click", (event) => {
+        myfunction(event, "message");
+      });
+
+      function myfunction(event, message) {
+        console.log("Event Type: ", event.type);
+        console.log("My Message: ", message);
+      }
+    </script>
+  </body>
+</html>

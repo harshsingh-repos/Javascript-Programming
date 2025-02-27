@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Event Listner Example and Functions in Javascript</title>
+  </head>
+  <body>
+    <button id="clickMe">Click Me</button>
+    <button id="newbtn">Click Me Also</button><br />
+    <input type="text" id="textInput" placeholder="Type Something" />
+    <button id="showtxt">Show Text</button>
+    <hr />
+    <br />
+    <p id="txtOutput"></p>
+    <form id="MyForm"></form>
+
+    <script>
+      document.getElementById("clickMe").addEventListener("click", function () {
+        myfunction("Button Clicked");
+      });
+
+      function myfunction(message) {
+        alert(message);
+      }
+
+      document
+        .getElementById("newbtn")
+        .addEventListener("click", () => mySecfunction("Hello How are you"));
+
+      function mySecfunction(message) {
+        console.log(message);
+      }
+
+      document.getElementById("showtxt").addEventListener("click", () => {
+        let inputvalue = document.getElementById("textInput").value;
+        document.getElementById("txtOutput").innerText =
+          "The output is : " + inputvalue;
+      });
+    </script>
+  </body>
+</html>
