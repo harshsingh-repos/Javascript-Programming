@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>Drag a Circle</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Drag the Circle</h2>
+    <svg id="drgCircle" width="500" heigth="500">
+      <circle
+        id="circle"
+        cx="100"
+        cy="100"
+        r="50"
+        stroke="black"
+        stroke-width="2"
+        fill="red"
+      />
+    </svg>
+    <script>
+      let circle = document.getElementById("circle");
+      let svg = document.getElementById("drgCircle");
+      let isDragging = false;
+
+      circle.addEventListener("mousedown", startDrag);
+      svg.addEventListener("mousemove", drag);
+      svg.addEventListener("mouseup", endDrag);
+
+      function startDrag(event) {
+        isDragging = true;
+      }
+
+      function drag(event) {
+        if (isDragging) {
+          let rect = svg.getBoundingClientRect();
+          let x = event.clientX - rect.left;
+          let y = event.clientY - rect.top;
+          circle.setAttribute("cx", x);
+          circle.setAttribute("cy", y);
+        }
+      }
+
+      function endDrag() {
+        isDragging = flase;
+      }
+    </script>
+  </body>
+</html>

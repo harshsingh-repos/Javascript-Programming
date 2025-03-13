@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>SVG Demo</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        margin: 20px;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Clickable Circle</h2>
+    <svg width="200" heigth="200">
+      <circle
+        id="circleOne"
+        cx="100"
+        cy="100"
+        r="50"
+        stroke="black"
+        stroke-width="2"
+        fill="red"
+      />
+    </svg>
+    <h2>Effects on rectangle</h2>
+    <svg width="200" heigth="200">
+      <rect
+        id="rectangle"
+        width="150"
+        height="150"
+        x="25"
+        y="15"
+        fill="blue"
+        stroke="black"
+        stroke-width="2"
+      />
+    </svg>
+    <h2>Button</h2>
+    <svg width="200" height="200">
+      <rect
+        id="button"
+        width="100"
+        height="30"
+        x="25"
+        y="10"
+        fill="gray"
+        stroke="black"
+        stroke-width="2"
+      />
+      <text id="label" x="50" y="80" font-size="16">Click the Button</text>
+    </svg>
+    <script>
+      document
+        .getElementById("circleOne")
+        .addEventListener("click", function () {
+          this.setAttribute(
+            "fill",
+            this.getAttribute("fill") === "red" ? "green" : "red"
+          );
+        });
+
+      document
+        .getElementById("rectangle")
+        .addEventListener("mouseover", function () {
+          this.setAttribute("fill", "yellow");
+        });
+      document
+        .getElementById("rectangle")
+        .addEventListener("mouseout", function () {
+          this.setAttribute("fill", "blue");
+        });
+
+      document.getElementById("button").addEventListener("click", function () {
+        document.getElementById("label").textContent = "Button Clicked";
+      });
+    </script>
+  </body>
+</html>

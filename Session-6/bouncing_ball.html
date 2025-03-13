@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Bouncing ball</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+      svg {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Bouncing Ball</h2>
+    <svg id="bounceBall">
+      <circle
+        id="ball"
+        cx="100"
+        cy="100"
+        r="50"
+        stroke="black"
+        stroke-width="2"
+        fill="red"
+      />
+    </svg>
+    <script>
+      let ball = document.getElementById("ball");
+      let svg = document.getElementById("bounceball");
+      let x = 50,
+        y = 50;
+      let dx = 3,
+        dy = 3;
+      let svgHeight = 500,
+        svgWidth = 500;
+
+      function bounceBall() {
+        x += dx;
+        y += dy;
+
+        if (x >= svgHeight - 20 || x <= 20) dx *= -1;
+        if (y >= svgWidth - 20 || y <= 20) dy *= -1;
+
+        ball.setAttribute("cx", x);
+        ball.setAttribute("cy", y);
+
+        requestAnimationFrame(bounceBall);
+      }
+
+      bounceBall();
+    </script>
+  </body>
+</html>

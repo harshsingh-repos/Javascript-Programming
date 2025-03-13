@@ -1,0 +1,39 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+/* #countdown {
+  font-size: 50px;
+  padding: 20px;
+  display: inline-block;
+  background-color: green;
+  color: aliceblue;
+} */
+
+img {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  border: 0ch;
+  transition: transform 0.5s ease-in-out;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(300deg);
+  }
+}
+.spin {
+  animation: spin 0.5s linear;
+}
