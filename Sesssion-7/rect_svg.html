@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>SVG Rect</title>
+    <style>
+      @keyframes moveRect {
+        0% {
+          transform: translate(0);
+        }
+        100% {
+          transform: translate(600px);
+        }
+      }
+
+      #rectangle {
+        animation: moveRect 2s infinite;
+      }
+      body {
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        margin: 20px;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      id="svgCanvas"
+      width="600"
+      height="400"
+      style="border: 1px solid black"
+    >
+      <rect id="rectangle" x="75" y="20" width="100" height="100" fill="blue" />
+      <!-- circle, ellipse, line, polygon, path -->
+      <circle id="circle" cx="100" cy="100" r="40" fill="red" />
+      <polygon id="polygon" points="200,10 250,150 160,200" fill="orange" />
+    </svg>
+    <button onClick="addCircle()">Add Circle</button>
+
+    <script>
+      const rect = document.getElementById("rectangle");
+      document
+        .getElementById("rectangle")
+        .addEventListener("click", function () {
+          //   this.setAttribute("fill", "red");
+          this.setAttribute("width", "200");
+        });
+      // Modify the rectangle to change color when double-click
+
+      document
+        .getElementById("circle")
+        .addEventListener("mouseover", function () {
+          //   this.setAttribute("fill", "yellow");
+          this.setAttribute("r", "20");
+        });
+      //   // Add a tooltip when hovering over the circle
+
+      document
+        .getElementById("circle")
+        .addEventListener("mouseout", function () {
+          this.setAttribute("fill", "green");
+        });
+
+      const polyGon = document.getElementById("polygon");
+
+      polyGon.style.transform = "translate(50px, 50px)";
+
+      rect.style.transform = "translate(50px, 50px)";
+
+      console.log("Assigned Width: ", rect.getAttribute("width"));
+      console.log("Assigned fill: ", rect.getAttribute("fill"));
+
+      const computedRect = window.getComputedStyle(rect);
+      console.log("Computed Width: ", computedRect.getPropertyValue("width"));
+      console.log("Computed fill: ", computedRect.getPropertyValue("fill"));
+
+      let position = 75;
+      let direction = 1;
+
+      function animateRect() {
+        position += 2 * direction;
+        if (position > 300 || position < 20) {
+          direction *= -1;
+        }
+        rect.setAttribute("x", position);
+        requestAnimationFrame(animateRect); //smoother animation
+      }
+      animateRect();
+
+      function addCircle() {
+        let svgCanvas = document.getElementById("svgCanvas");
+        let circleNew = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
+        );
+        circleNew.setAttribute("cx", Math.random() * 300 + 30);
+        circleNew.setAttribute("cy", Math.random() * 200 + 50);
+        circleNew.setAttribute("r", 30);
+        circleNew.setAttribute("fill", "blue");
+        svgCanvas.appendChild(circleNew);
+      }
+    </script>
+  </body>
+</html>
