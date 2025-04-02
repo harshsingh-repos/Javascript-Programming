@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>Load Posts</title>
+    <style>
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      button {
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Create a post</h2>
+    <input type="text" id="postTitle" placeholder="Post Title " />
+    <textarea
+      id="postBody"
+      rows="5"
+      placeholder="Write about your posts"
+    ></textarea>
+    <button onClick="addPost()">Post</button>
+    <h3>Post</h3>
+    <ul id="postList"></ul>
+  </body>
+  <script>
+    function addPost() {
+      const title = document.getElementById("postTitle").value.trim();
+      const body = document.getElementById("postBody").value.trim();
+      const list = document.getElementById("postList");
+
+      if (!title || !body) {
+        alert("Please Enter both a title and body");
+        return;
+      }
+
+      const li = document.createElement("li");
+      const titleElement = document.createElement("strong");
+      titleElement.textContent = title;
+      const bodyElement = document.createElement("p");
+      bodyElement.textContent = body;
+      li.appendChild(titleElement);
+      li.appendChild(bodyElement);
+      list.prepend(li);
+
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postBody").value = "";
+    }
+  </script>
+</html>

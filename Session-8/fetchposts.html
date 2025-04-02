@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Load Posts</title>
+    <style>
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      button {
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Load Posts</h2>
+      <button onclick="loadPosts()">Load Posts</button>
+      <ul id="postList"></ul>
+    </div>
+    <script>
+      function loadPosts() {
+        fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+          .then((response) => response.json())
+          .then((data) => {
+            const ul = document.getElementById("postList");
+            ul.innerHTML = "";
+            data.forEach((post) => {
+              const li = document.createElement("li");
+              li.innerHTML = `<strong>Title : </strong>${post.title}, <strong>Body:</strong>${post.body}`;
+              ul.appendChild(li);
+            });
+          })
+          .catch((error) => {
+            console.error("Failed to load posts", error);
+          });
+      }
+    </script>
+  </body>
+</html>

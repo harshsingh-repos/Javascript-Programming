@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Load users Info</title>
+    <style>
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      li {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>User List</h2>
+    <ul id="userList"></ul>
+
+    <script>
+      fetch("user.json")
+        .then((response) => response.json())
+        .then((users) => {
+          const ul = document.getElementById("userList");
+
+          users.forEach((user) => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>Name:</strong> ${user.name}
+            <br><strong>Age:</strong> ${user.age}`;
+            ul.appendChild(li);
+          });
+        })
+        .catch((error) => console.error("Error loading JSON: ", error));
+    </script>
+  </body>
+</html>
